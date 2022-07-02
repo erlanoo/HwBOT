@@ -6,7 +6,6 @@ storage = MemoryStorage()
 
 TOKEN = config("TOKEN")
 bot = Bot(TOKEN)
-
 dp = Dispatcher(bot=bot, storage=storage)
-
 ADMIN = [886271609]
+URL = "https://erapython.herokuapp.com/"
