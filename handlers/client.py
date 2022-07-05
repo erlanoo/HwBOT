@@ -85,6 +85,6 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(q, commands=["Qu"])
 
     dp.register_message_handler(anime_rezka, commands=["anime"])
-    #dp.register_message_handler(cartoon_rezka, commands=["cartoon"])
-    #dp.register_message_handler(series_rezka, commands=["series"])
+    dp.register_message_handler(cartoon_rezka, commands=["cartoon"])
+    dp.register_message_handler(series_rezka, commands=["series"])
 

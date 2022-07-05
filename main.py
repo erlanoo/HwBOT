@@ -13,12 +13,11 @@ async def on_startup(_):
 
 async def on_shutdown(dp):
     await bot.delete_webhook()
-
+admin.register_hundler_admin(dp)
 notifiation.register_handler_notifiation(dp)
+callback.register_handlers_callback(dp)
 FSMAdmin.register_handler_fsm_dish(dp)
 client.register_handlers_client(dp)
-callback.register_handlers_callback(dp)
-admin.register_hundler_admin(dp)
 extra.register_handlers_extra(dp)
 
 
