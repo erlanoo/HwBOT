@@ -1,10 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
-
 from config import bot
-
-# @dp.message_handler(commands=['start'])
-from prosto_parser import anime
+from prosto_parser import anime, cartoon, series
 
 
 async def command_start(message: types.Message):
@@ -60,11 +57,26 @@ async def q(message: types.Message):
         reply_markup=markup,
     )
 
-async def anime_rezka(message:types.Message):
+async def anime_rezka(message: types.Message):
     data = anime.scrapy_anime()
     for i in data:
 
-        await bot.send_message(message.chat.id,i)
+        await bot.send_message(message.chat.id, i)
+
+
+async def cartoon_rezka(message: types.Message):
+    data = cartoon.scrapy_cartoon()
+    for i in data:
+
+        await bot.send_message(message.chat.id, i)
+
+
+async def series_rezka(message: types.Message):
+    data = series.scrapy_series()
+    for i in data:
+
+        await bot.send_message(message.chat.id, i)
+
 
 def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(command_start, commands=["start"])
@@ -73,4 +85,6 @@ def register_handlers_client(dp: Dispatcher):
     dp.register_message_handler(q, commands=["Qu"])
 
     dp.register_message_handler(anime_rezka, commands=["anime"])
+    #dp.register_message_handler(cartoon_rezka, commands=["cartoon"])
+    #dp.register_message_handler(series_rezka, commands=["series"])
 

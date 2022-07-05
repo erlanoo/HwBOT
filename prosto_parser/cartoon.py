@@ -15,24 +15,18 @@ def get_requests(url, params=''):
 
 
 def get_data(html):
-    soup = BeautifulSoup(html,"html.parser")
-    items = soup.find_all("div",class_='b-content__inline_item')
+    soup = BeautifulSoup(html, "html.parser")
+    items = soup.find_all("div", class_='b-content__inline_item')
     cartoon = []
 
     for i in items:
         cartoon.append(
             {
                 'link': i.find('div',class_='b-content__inline_item-cover').find('a').get('href'),
-                'image': i.find('div',class_='b-content__inline_item-cover').find('a').find('img').get('src'),
+                'image': i.find('div').find('a').find('img').get('src'),
                 'title': i.find('div',class_='b-content__inline_item-link').find('a').getText()
-  } )
-    print(items)
-    return cartoon[0].values()
-
-
-
-
-
+            })
+    return cartoon
 
 
 def scrapy_cartoon():
